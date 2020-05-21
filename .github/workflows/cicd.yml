@@ -33,5 +33,5 @@ jobs:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
       run: |
         sudo docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
-        sudo docker run crgarlemontreeregistry.azurecr.io/lemontreeserver:latest -p 9999:80
+        sudo docker run -p 9999:80 crgarlemontreeregistry.azurecr.io/lemontreeserver:latest
 
