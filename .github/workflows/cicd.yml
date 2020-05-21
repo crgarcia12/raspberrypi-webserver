@@ -34,5 +34,5 @@ jobs:
       run: |
         sudo docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
         sudo docker ps -aq --filter "name=lemontreeserver" | grep -q . && sudo docker stop lemontreeserver && sudo docker rm -fv lemontreeserver
-        sudo docker run -p 9999:80 --name=lemontreeserver -d crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}}
+        sudo docker run -p 9999:80 --privileged --name=lemontreeserver -d crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}}
 

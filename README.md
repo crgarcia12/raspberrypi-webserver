@@ -18,4 +18,9 @@ uname -m
 In GitHub go to Settings -> Actions and install a self hosted agent for ARM or ARM64 based on previous step
 Add `raspberry` as an extra tag
  
- 
+### Running the agent
+You can go to a terminal and simply run
+```
+pi@raspberrypi:~/actions-runner $ ./run.sh
+```
+

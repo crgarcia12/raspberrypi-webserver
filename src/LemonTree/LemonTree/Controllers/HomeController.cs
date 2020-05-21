@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LemonTree.Models;
+using System.Device.Gpio;
 
 namespace LemonTree.Controllers
 {
@@ -20,6 +21,12 @@ namespace LemonTree.Controllers
 
         public IActionResult Index()
         {
+            int pin = 17;
+            GpioController controller = new GpioController();
+            controller.OpenPin(pin, PinMode.Input);
+            PinValue pinValue = controller.Read(pin);
+            ViewBag.PinValue = pinValue == PinValue.High ? "HIGH": "LOW";
+            
             return View();
         }
 
