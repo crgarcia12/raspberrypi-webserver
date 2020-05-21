@@ -8,13 +8,13 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster-arm32v7 AS build
 WORKDIR /src
 COPY ["LemonTree/LemonTree.csproj", "LemonTree/"]
-RUN dotnet restore "LemonTree/LemonTree.csproj"
+RUN dotnet restore "LemonTree/LemonTree.csproj" -r linux-arm
 COPY . .
 WORKDIR "/src/LemonTree"
-RUN dotnet build "LemonTree.csproj" -c Release -o /app/build
+RUN dotnet build "LemonTree.csproj" -c Release -o /app/build -r linux-arm
 
 FROM build AS publish
-RUN dotnet publish "LemonTree.csproj" -c Release -o /app/publish
+RUN dotnet publish "LemonTree.csproj" -c Release -o /app/publish -r linux-arm
 
 FROM base AS final
 WORKDIR /app
