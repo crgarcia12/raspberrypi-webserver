@@ -5,5 +5,5 @@ function Use-LemonTreeDockerRegistry
         [string] $RegistryPassword
     )
 
-    docker login -u crgarlemontreeregistry.azurecr.io -p $RegistryPassword
+    docker login -u crgarlemontreeregistry -p $RegistryPassword crgarlemontreeregistry.azurecr.io
 }
