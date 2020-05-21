@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:$(date +%s)
+      run: docker build . --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:$(date +%s)
     - name: Login to registry
       env:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
