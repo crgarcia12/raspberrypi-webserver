@@ -33,6 +33,6 @@ jobs:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
       run: |
         sudo docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
-        docker ps -aq --filter "name=lemontreeserver" | grep -q . && docker kill lemontreeserver && docker rm -fv lemontreeserver
-        sudo docker run --rm -p 9999:80 --name=lemontreeserver -d crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}}
+        sudo docker ps -aq --filter "name=lemontreeserver" | grep -q . && docker kill lemontreeserver && docker rm -fv lemontreeserver
+        sudo docker run -p 9999:80 --name=lemontreeserver -d crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}}
 
