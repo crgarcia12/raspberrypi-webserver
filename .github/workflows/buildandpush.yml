@@ -16,13 +16,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker imagedi
       run: |
-        docker build --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:$(github.run_number) src/LemonTree 
-        docker build --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:latest src/LemonTree 
+        docker build --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:${{ secrets.ContainerRegistryPassword }} --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:latest src/LemonTree 
     - name: Login to registry
       env:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
       run: docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
     - name: Build the Docker image
       run: |
-        docker push crgarlemontreeregistry.azurecr.io/lemontreeserver:$(github.run_number)
-        docker push crgarlemontreeregistry.azurecr.io/lemontreeserver:latest
+        docker push crgarlemontreeregistry.azurecr.io/lemontreeserver
