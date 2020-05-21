@@ -15,15 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Docker images
-      run: |
-        docker build --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}} --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:latest src/LemonTree 
+      run: sudo docker build --file src/LemonTree/LemonTree/Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:${{github.run_number}} --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:latest src/LemonTree 
     - name: Login to registry
       env:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
-      run: docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
+      run: sudo docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
     - name: Push Docker images
-      run: |
-        docker push crgarlemontreeregistry.azurecr.io/lemontreeserver
+      run: sudo docker push crgarlemontreeregistry.azurecr.io/lemontreeserver
         
   release:
     needs: build
