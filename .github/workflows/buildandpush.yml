@@ -24,3 +24,16 @@ jobs:
     - name: Push Docker images
       run: |
         docker push crgarlemontreeregistry.azurecr.io/lemontreeserver
+        
+  release:
+    runs-on: self-hosted
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Docker Image
+      env:
+        ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
+      run: |
+        docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
+        docker run crgarlemontreeregistry.azurecr.io/lemontreeserver:latest
+
