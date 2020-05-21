@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag crgarlemontreeregistry.azurecr.io/lemontreeserver:$(date +%s)
+    - name: Login to registry
+      run: docker login -u crgarlemontreeregistry -p ${{ secrets.ContainerRegistryPassword }} crgarlemontreeregistry.azurecr.io
+    - name: Build the Docker image
+      run: docker push crgarlemontreeregistry.azurecr.io/lemontreeserver:$(date +%s)
