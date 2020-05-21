@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
@@ -35,5 +35,5 @@ jobs:
         ContainerRegistryPassword: ${{ secrets.ContainerRegistryPassword }}
       run: |
         sudo docker login -u crgarlemontreeregistry -p "$ContainerRegistryPassword" crgarlemontreeregistry.azurecr.io
-        sudo docker run crgarlemontreeregistry.azurecr.io/lemontreeserver:latest
+        sudo docker run crgarlemontreeregistry.azurecr.io/lemontreeserver:latest -p 9999:80
 
