@@ -26,6 +26,7 @@ jobs:
         docker push crgarlemontreeregistry.azurecr.io/lemontreeserver
         
   release:
+    needs: build
     runs-on: self-hosted
     
     steps:
