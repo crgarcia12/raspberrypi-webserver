@@ -21,12 +21,18 @@ namespace LemonTree.Controllers
 
         public IActionResult Index()
         {
-            int pin = 17;
-            GpioController controller = new GpioController();
-            controller.OpenPin(pin, PinMode.Input);
-            PinValue pinValue = controller.Read(pin);
-            ViewBag.PinValue = pinValue == PinValue.High ? "HIGH": "LOW";
-            
+            try
+            {
+                int pin = 17;
+                GpioController controller = new GpioController();
+                controller.OpenPin(pin, PinMode.Input);
+                PinValue pinValue = controller.Read(pin);
+                ViewBag.PinValue = pinValue == PinValue.High ? "HIGH" : "LOW";
+            }
+            catch(Exception ex)
+            {
+
+            }
             return View();
         }
 
