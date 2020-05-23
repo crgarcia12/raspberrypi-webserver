@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LemonTree.Models;
 using System.Device.Gpio;
+using LemonTree.Hardware;
 
 namespace LemonTree.Controllers
 {
@@ -21,6 +22,7 @@ namespace LemonTree.Controllers
 
         public IActionResult Index()
         {
+<<<<<<< HEAD
             try
             {
                 int pin = 17;
@@ -34,6 +36,14 @@ namespace LemonTree.Controllers
 
             }
             return View();
+=======
+
+            using (ADS1115Sensor sensor = new ADS1115Sensor())
+            {
+                ViewBag.Sensor = sensor.GetValue();
+                return View();
+            }
+>>>>>>> 020559a1bf0467b5c95ffc0a5e52d52a050948b9
         }
 
         public IActionResult Privacy()
