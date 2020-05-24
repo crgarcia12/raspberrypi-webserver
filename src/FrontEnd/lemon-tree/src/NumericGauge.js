@@ -37,11 +37,11 @@ class NumericGauge extends React.Component {
   };
 
   onStart = () => {
-    this.setState({activeDrags: ++this.state.activeDrags});
+    this.setState({activeDrags: this.state.activeDrags + 1});
   };
 
   onStop = () => {
-    this.setState({activeDrags: --this.state.activeDrags});
+    this.setState({activeDrags: this.state.activeDrags - 1});
   };
 
   // For controlled component
