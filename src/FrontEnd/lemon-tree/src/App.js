@@ -1,5 +1,4 @@
 import React from 'react';
-import lemonTreeImg from './static/images/lemontree.png';
 import './App.css';
 import NumericGauge from './NumericGauge.js';
 
@@ -11,7 +10,7 @@ function App() {
         <NumericGauge value="Temp: 18º"/>
         <NumericGauge value="Hum: 20%"/>
         <NumericGauge value="Sun: 40"/>
-        <img src={lemonTreeImg} className="LemonTree-logo" alt="logo" />
+        <img src={process.env.PUBLIC_URL + '/lemontree.png'} className="LemonTree-logo" alt="logo" />
       </header>
     </div>
     
