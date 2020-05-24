@@ -8,7 +8,9 @@ function App() {
     <>
     <div className="App">
       <header className="App-header">
-        <NumericGauge time="morning"/>
+        <NumericGauge value="Temp: 18º"/>
+        <NumericGauge value="Hum: 20%"/>
+        <NumericGauge value="Sun: 40"/>
         <img src={lemonTreeImg} className="LemonTree-logo" alt="logo" />
       </header>
     </div>

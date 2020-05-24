@@ -5,7 +5,7 @@ import './NumericGauge.css';
 class NumericGauge extends React.Component {
   constructor(props) {
     super(props);
-    // Next we establish our state
+
     this.state = {
       activeDrags: 0,
       deltaPosition: {
@@ -13,11 +13,17 @@ class NumericGauge extends React.Component {
       },
       controlledPosition: {
         x: -400, y: 200
-      }
+      },
+      value: this.props.value
     };
 
     // To use the 'this' keyword, we need to bind it to our function
-    this.onChange = this.onChange.bind(this);
+    // this.onChange = this.onChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = (e) => { 
+    this.setState({value: e.target.value});
   }
 
   handleDrag = (e, ui) => {
@@ -64,21 +70,19 @@ class NumericGauge extends React.Component {
     this.onStop();
   };
 
-  // A custom function to change the name in our state to match the user input
-  onChange(e) {
-      this.setState({
-      name: e.target.value
-    })
-  }
-
   render() {
     const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
     return (
-    <>
-    <Draggable {...dragHandlers}>
-      <div className="box">Temp: 18º</div>
-    </Draggable>
-    </>
-  );}
+      <>
+      <Draggable {...dragHandlers}>
+        <div className="box">
+          <div class="logo">
+            <b><span>{this.state.value}</span></b>
+          </div>
+        </div>
+      </Draggable>
+      </>
+    );
+  }
 }
 export default NumericGauge;
