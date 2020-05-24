@@ -8,10 +8,11 @@ function App() {
     <>
     <div className="App">
       <header className="App-header">
+        <NumericGauge time="morning"/>
         <img src={lemonTreeImg} className="LemonTree-logo" alt="logo" />
       </header>
     </div>
-    <NumericGauge time="morning"/>
+    
     </>
   );
 }

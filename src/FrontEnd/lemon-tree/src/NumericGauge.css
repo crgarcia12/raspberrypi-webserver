@@ -1,15 +1,33 @@
-.numericgauge {
-    position: absolute;
-    z-index: 9;
-    background-color: #f1f1f1;
-    border: 1px solid #d3d3d3;
-    text-align: center;
-}
-
-.numericgaugeheader {
-    padding: 10px;
+.react-draggable, .cursor {
     cursor: move;
-    z-index: 10;
-    background-color: #2196F3;
-    color: #fff;
-}
+  }
+  .no-cursor {
+    cursor: auto;
+  }
+  .cursor-y {
+    cursor: ns-resize;
+  }
+  .cursor-x {
+    cursor: ew-resize;
+  }
+
+  .react-draggable strong {
+    background: #ddd;
+    border: 1px solid #999;
+    border-radius: 3px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 3px 5px;
+    text-align: center;
+  }
+
+  .box {
+    background: rgb(7, 7, 7);
+    border: 1px solid #999;
+    border-radius: 3px;
+    width: 180px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+  }
