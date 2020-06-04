@@ -1,4 +1,5 @@
 ![Docker Image CI](https://github.com/crgarcia12/raspberrypi-webserver/workflows/Docker%20Image%20CI/badge.svg)
+![Azure Static Web Apps CI/CD](https://github.com/crgarcia12/raspberrypi-lemontree/workflows/Azure%20Static%20Web%20Apps%20CI/CD/badge.svg)
 
 # Building on Windows for Raspberry PI using Github Actions and Docker
 This projects deploy a website in raspberry pi container and controls some GPIO
