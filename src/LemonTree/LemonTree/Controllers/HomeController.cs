@@ -8,42 +8,39 @@ using Microsoft.Extensions.Logging;
 using LemonTree.Models;
 using System.Device.Gpio;
 using LemonTree.Hardware;
+using LemonTree.Services;
+using Microsoft.AspNetCore.SignalR;
 
 namespace LemonTree.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHubContext<Chat> SignalRHubContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHubContext<Chat> ctx)
         {
+            this.SignalRHubContext = ctx;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-<<<<<<< HEAD
             try
             {
-                int pin = 17;
-                GpioController controller = new GpioController();
-                controller.OpenPin(pin, PinMode.Input);
-                PinValue pinValue = controller.Read(pin);
-                ViewBag.PinValue = pinValue == PinValue.High ? "HIGH" : "LOW";
+                await this.SignalRHubContext.Clients.All.SendAsync("broadcastMessage", "Carlos", "13");
+
+                using (ADS1115Sensor sensor = new ADS1115Sensor())
+                {
+                    ViewBag.Sensor = sensor.GetValue();
+                    return View();
+                }
             }
             catch(Exception ex)
             {
-
-            }
-            return View();
-=======
-
-            using (ADS1115Sensor sensor = new ADS1115Sensor())
-            {
-                ViewBag.Sensor = sensor.GetValue();
+                ViewBag.Sensor = "no sensor";
                 return View();
             }
->>>>>>> 020559a1bf0467b5c95ffc0a5e52d52a050948b9
         }
 
         public IActionResult Privacy()
