@@ -76,7 +76,7 @@ class NumericGauge extends React.Component {
       <>
       <Draggable {...dragHandlers}>
         <div className="box">
-          <div class="logo">
+          <div className="logo">
             <b><span>{this.state.value}</span></b>
           </div>
         </div>

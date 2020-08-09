@@ -12,6 +12,7 @@ using Microsoft.Extensions.Azure;
 using Azure.Storage.Queues;
 using Azure.Storage.Blobs;
 using Azure.Core.Extensions;
+using LemonTree.Services;
 
 namespace LemonTree
 {
@@ -34,6 +35,7 @@ namespace LemonTree
                 builder.AddQueueServiceClient(Configuration["ConnectionStrings:lemon-tree-storage:queue"], preferMsi: true);
             });
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+            services.AddSignalR().AddAzureSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +57,11 @@ namespace LemonTree
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(routes =>
+            {
+                routes.MapHub<Chat>("/chat");
+            });
 
             app.UseEndpoints(endpoints =>
             {

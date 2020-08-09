@@ -11,6 +11,9 @@
       "type": "appInsights.azure",
       "connectionId": "APPINSIGHTS_INSTRUMENTATIONKEY",
       "secretStore": "LocalSecretsFile"
+    },
+    "secrets1": {
+      "type": "secrets.user"
     }
   }
 }
